@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:body>
+    <nav>
+        <h:link value="See all bands" outcome="index"/>
+        <h:link value="See all festival" outcome="festival"/>
+        <h:link value="Search for a band" outcome="bandSearch"/>
+    </nav>
+    <ui:repeat value="#{festivals.allFestivals}" var="festival">
+
+
+
+        <h1>#{festival.name} :</h1>
+        <h2>Bands: </h2>
+        <ol>
+            <ui:repeat value="#{festival.bands}" var="band">
+                <li><h:link value="#{band.name}" outcome="musicians?bandId=#{band.id}" /></li>
+            </ui:repeat>
+        </ol>
+
+    </ui:repeat>
+
+</h:body>
+</html>

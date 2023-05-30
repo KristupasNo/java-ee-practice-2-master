@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Musicians playing in #{musiciansForBand.band.name} band:</h2>
+    <ol>
+        <ui:repeat value="#{musiciansForBand.band.musicians}" var="musician">
+            <li>#{musician.name}</li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{musiciansForBand.musicianToCreate.name}" required="true" />
+        <h:commandButton value="Add musician to the band" action="#{musiciansForBand.createMusician}" >
+            <f:param name="bandId" value="#{musiciansForBand.band.id}" />
+        </h:commandButton>
+    </h:form>
+    <h:link outcome="/myBatis/bands" value="Back to bands page"/>
+</h:body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <nav>
+        <h:link value="See all bands" outcome="index"/>
+        <h:link value="See all festival" outcome="festival"/>
+        <h:link value="Search for a band" outcome="bandSearch"/>
+    </nav>
+    <h2>Musicians playing in #{musiciansForBand.band.name} band:</h2>
+    <ol>
+        <ui:repeat value="#{musiciansForBand.band.musicians}" var="musician">
+            <li>
+                <h:link value="#{musician.name} #{musician.instrument}" outcome="musicianDetails?musicianId=#{musician.id}" />
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{musiciansForBand.musicianToCreate.name}" required="true">
+            <f:validateBean />
+        </h:inputText>
+        <h:message for="j_idt14:j_idt15" style="color: red;" />
+        <h:commandButton value="Add musician to the band"
+                         actionListener="#{musiciansForBand.createMusician}"
+                         action="#{'musicians?faces-redirect=true&amp;bandId='.concat(musiciansForBand.band.id)}">
+            <f:param name="bandId" value="#{musiciansForBand.band.id}" />
+        </h:commandButton>
+    </h:form>
+    <h:link outcome="index" value="Back to bands page"/>
+</h:body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<h:body>
+    <nav>
+        <h:link value="See all bands" outcome="index"/>
+        <h:link value="See all festival" outcome="festival"/>
+        <h:link value="Search for a band" outcome="bandSearch"/>
+    </nav>
+    <h2>Search for a band: </h2>
+    <h:form>
+        <h:inputText value="#{bands.bandToSearch}" required="true"/>
+        <h:commandButton value="Search for a band" actionListener="#{bands.loadBandLike}"/>
+    </h:form>
+
+    <ol>
+        <ui:repeat value="#{bands.loadedBands}" var="band">
+            <li><h:link value="#{band.name}" outcome="musicians?bandId=#{band.id}" /></li>
+        </ui:repeat>
+    </ol>
+
+
+
+</h:body>
+</html>
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
+        bean-discovery-mode="annotated">
+
+    <alternatives>
+        <class>lt.vu.usecases.StrongValidator</class>
+
+    </alternatives>
+
+    <interceptors>
+        <class>lt.vu.interceptors.MethodLogger</class>
+    </interceptors>
+
+    <decorators>
+
+    </decorators>
+</beans>

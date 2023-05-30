@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Bands:</h2>
+    <ol>
+        <ui:repeat value="#{bandsMyBatis.allBands}" var="band">
+            <li><h:link value="#{band.name}" outcome="musicians?bandId=#{band.id}" /></li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText value="#{bandsMyBatis.bandToCreate.name}" required="true" />
+        <h:commandButton value="Add new band" action="#{bandsMyBatis.createBand}" />
+    </h:form>
+    <h:link value="Back to index" outcome="/index"/>
+</h:body>
+</html>
